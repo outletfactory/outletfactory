@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Outlet Factory App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outlet Factory PRO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1em 0;
+      text-align: center;
+    }
+    nav {
+      background-color: #444;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.5em 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5em;
+    }
+    nav a:hover {
+      background-color: #555;
+    }
+    main {
+      padding: 1em;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <h1>¡Bienvenido a Outlet Factory PRO!</h1>
-  <p>Tu app está lista y funcionando en Netlify.</p>
+  <header>
+    <h1>Outlet Factory PRO</h1>
+  </header>
+  <nav>
+    <a href="#" data-section="subir">Subir Inventario</a>
+    <a href="#" data-section="venta">Venta</a>
+    <a href="#" data-section="apartados">Apartados</a>
+    <a href="#" data-section="notas">Notas Cerradas</a>
+    <a href="#" data-section="ver">Ver Inventario</a>
+  </nav>
+  <main>
+    <section id="subir" class="active">
+      <h2>Subir Inventario</h2>
+      <p>Formulario para agregar nuevos productos.</p>
+    </section>
+    <section id="venta">
+      <h2>Venta</h2>
+      <p>Procesar ventas de productos.</p>
+    </section>
+    <section id="apartados">
+      <h2>Apartados</h2>
+      <p>Gestionar productos apartados.</p>
+    </section>
+    <section id="notas">
+      <h2>Notas Cerradas</h2>
+      <p>Ver notas de ventas cerradas.</p>
+    </section>
+    <section id="ver">
+      <h2>Ver Inventario</h2>
+      <p>Listado completo del inventario.</p>
+    </section>
+  </main>
+  <script>
+    const links = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-section');
+        sections.forEach(section => {
+          section.classList.remove('active');
+        });
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
